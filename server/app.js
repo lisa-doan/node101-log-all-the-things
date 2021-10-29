@@ -15,6 +15,9 @@ app.use((req, res, next) => {
     Version: "HTTP/" + req.httpVersion,
     Status: 200,
   };
+ fs.appendFile("./server/log.csv", JSON.stringify(req.data), function (err) {
+   if (err) throw err;
+ });
  next();
 });
 
